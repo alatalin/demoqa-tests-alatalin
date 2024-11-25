@@ -22,7 +22,7 @@ public class TextBoxTests {
     @Test
     void fillFormTest() {
         open("/text-box");
-        $("[id=userName]").setValue("TestName");
+        $("#userName").setValue("TestName");
         $("#userEmail").setValue("TestName@mail.com");
         $("#currentAddress").setValue("TestName_Adr");
         $("#permanentAddress").setValue("TestName_PermAdr");
