@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,7 +26,7 @@ public class PracticeFormTests {
         $("#firstName").setValue("Alex");
         $("#lastName").setValue("Latalin");
         $("#userEmail").setValue("AlexL@nomail.com");
-        $("#genterWrapper" ).$(byText("Male")).click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("9991234567");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").click();
