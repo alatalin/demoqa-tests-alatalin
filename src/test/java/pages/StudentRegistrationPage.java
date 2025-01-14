@@ -20,11 +20,13 @@ public class StudentRegistrationPage {
     hobbies = $("#hobbiesWrapper"),
     imageUpload = $("#uploadPicture"),
     currentAdressInput = $("#currentAddress"),
-
+    userStateInput = $("#react-select-3-input"),
+    userCityInput = $("#react-select-4-input"),
+    submitButton = $("#submit");
 
     public CalendarComponent calendarComponent = new CalendarComponent();
 
-    public void openPage() {
+    public static void openPage() {
         open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
@@ -72,5 +74,19 @@ public class StudentRegistrationPage {
         currentAdressInput.setValue(value);
     }
 
+    public void setUserStateInput (String value) {
+        userStateInput.setValue(value).pressEnter();
+    }
 
+    public void setUserCityInput (String value) {
+        userCityInput.setValue(value).pressEnter();
+    }
+
+    public void setSubmitButton () {
+        submitButton.click();
+    }
+
+    public void succesfulRegistration () {
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+    }
 }
