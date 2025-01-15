@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class StudentRegistrationPage {
 
-    public SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
     lastNameInput = $("#lastName"),
     userEmailInput = $("#userEmail"),
     genderWrapperInput = $("#genterWrapper"),
@@ -19,74 +20,97 @@ public class StudentRegistrationPage {
     subjectsInput = $("#subjectsInput"),
     hobbies = $("#hobbiesWrapper"),
     imageUpload = $("#uploadPicture"),
-    currentAdressInput = $("#currentAddress"),
+    currentAddressInput = $("#currentAddress"),
     userStateInput = $("#react-select-3-input"),
     userCityInput = $("#react-select-4-input"),
-    submitButton = $("#submit");
+    submitButton = $("#submit"),
+    registrationResultMessage = $("#example-modal-sizes-title-lg"),
+    registrationResultTable = $(".table");
 
     public CalendarComponent calendarComponent = new CalendarComponent();
 
-    public static void openPage() {
+    public StudentRegistrationPage openPage() {
         open("/automation-practice-form");
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        return this;
     }
 
-    public void setFirstName (String value) {
+    public StudentRegistrationPage setFirstName (String value) {
         firstNameInput.setValue(value);
+        return this;
+
     }
 
-    public void setLastName (String value) {
+    public StudentRegistrationPage setLastName (String value) {
         lastNameInput.setValue(value);
+        return this;
     }
 
-    public void setUserEmailInput (String value) {
+    public StudentRegistrationPage setUserEmail(String value) {
         userEmailInput.setValue(value);
+        return this;
     }
 
-    public void setGenderWrapperInput(String value) {
+    public StudentRegistrationPage setGenderWrapper(String value) {
         genderWrapperInput.$(byText(value)).click();
+        return this;
     }
 
-    public void setUserNumber (String value) {
+    public StudentRegistrationPage setUserNumber (String value) {
         userNumberInput.setValue(value);
+        return this;
     }
 
-    public void setDateOfBirth (String day, String month, String year) {
+    public StudentRegistrationPage setDateOfBirth (String day, String month, String year) {
         dateOfBirthInput.click();
         calendarComponent.setDate(day,month,year);
+        return this;
     }
 
-    public void setSubjectsInput (String value) {
-        subjectsInput.setValue(value).pressTab();
+    public StudentRegistrationPage setSubjects (String subject) {
+        subjectsInput.setValue(subject).pressEnter();
+        return this;
     }
 
-    public void setHobbies (String value) {
+    public StudentRegistrationPage setHobbies (String value) {
         hobbies.$(byText(value)).click();
+        return this;
     }
 
-    public void imageUpload (String value) {
+    public StudentRegistrationPage imageUpload (String value) {
         imageUpload.uploadFromClasspath(value);
+        return this;
     }
 
-    public void setCurrentAdress (String value) {
-        currentAdressInput.setValue(value);
+    public StudentRegistrationPage setCurrentAddress (String value) {
+        currentAddressInput.setValue(value);
+        return this;
     }
 
-    public void setUserStateInput (String value) {
+    public StudentRegistrationPage setUserState (String value) {
         userStateInput.setValue(value).pressEnter();
+        return this;
     }
 
-    public void setUserCityInput (String value) {
+    public StudentRegistrationPage setUserCity (String value) {
         userCityInput.setValue(value).pressEnter();
+        return this;
     }
 
-    public void setSubmitButton () {
+    public StudentRegistrationPage submitButtonClick() {
         submitButton.click();
+        return this;
     }
 
-    public void succesfulRegistration () {
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+    public StudentRegistrationPage checkRegistrationResultMessage(String value) {
+        registrationResultMessage.shouldHave(text(value));
+        return this;
+    }
+
+    public StudentRegistrationPage checkRegistrationResultTable (String key, String value) {
+        registrationResultTable.shouldHave(text(key)).shouldHave(text(value));
+        return this;
     }
 }
