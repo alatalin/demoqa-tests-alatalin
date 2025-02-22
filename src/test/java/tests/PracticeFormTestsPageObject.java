@@ -51,4 +51,17 @@ public class PracticeFormTestsPageObject extends TestBase {
                 .checkRegistrationResultTable("Gender","Male")
                 .checkRegistrationResultTable("Mobile","9991234567");
     }
+
+    @Test
+    public void notValidPhoneNumberPracticeFormTest() {
+        studentRegistrationPage.openPage()
+                .setFirstName("Alex")
+                .setLastName("Latalin")
+                .setGenderWrapper("Male")
+                .setUserNumber("999123456")
+                .submitButtonClick()
+
+                .checkMobileNumberError();
+    }
+
 }

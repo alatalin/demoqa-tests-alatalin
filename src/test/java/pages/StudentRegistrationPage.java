@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
+import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -111,6 +112,11 @@ public class StudentRegistrationPage {
 
     public StudentRegistrationPage checkRegistrationResultTable (String key, String value) {
         registrationResultTable.shouldHave(text(key)).shouldHave(text(value));
+        return this;
+    }
+
+    public StudentRegistrationPage checkMobileNumberError() {
+        userNumberInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 }
