@@ -1,7 +1,6 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import pages.StudentRegistrationPage;
 import pages.TextBoxPage;
 
 public class TextBoxTestsPageObject extends TestBase {
