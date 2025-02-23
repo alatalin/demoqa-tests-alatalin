@@ -12,6 +12,7 @@ public class PracticeFormTestsFaker extends TestBase {
     @Test
     public void succesfullFillAllPracticeFormTest() {
         studentRegistrationPage.openPage()
+                .disableBanners()
                 .setFirstName(testDataFaker.firstName)
                 .setLastName(testDataFaker.lastName)
                 .setUserEmail(testDataFaker.email)
@@ -42,6 +43,7 @@ public class PracticeFormTestsFaker extends TestBase {
     @Test
     public void succesfullMimimumDataPracticeFormTest() {
         studentRegistrationPage.openPage()
+                .disableBanners()
                 .setFirstName(testDataFaker.firstName)
                 .setLastName(testDataFaker.lastName)
                 .setGenderWrapper(testDataFaker.gender)
@@ -57,6 +59,7 @@ public class PracticeFormTestsFaker extends TestBase {
     @Test
     public void notValidPhoneNumberPracticeFormTest() {
         studentRegistrationPage.openPage()
+                .disableBanners()
                 .setFirstName(testDataFaker.firstName)
                 .setLastName(testDataFaker.lastName)
                 .setGenderWrapper(testDataFaker.gender)

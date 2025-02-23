@@ -1,8 +1,8 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.TableComponent;
 
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
@@ -25,23 +25,26 @@ public class StudentRegistrationPage {
     userStateInput = $("#react-select-3-input"),
     userCityInput = $("#react-select-4-input"),
     submitButton = $("#submit"),
-    registrationResultMessage = $("#example-modal-sizes-title-lg"),
-    registrationResultTable = $(".table");
+    registrationResultMessage = $("#example-modal-sizes-title-lg");
 
     public CalendarComponent calendarComponent = new CalendarComponent();
+    public TableComponent tableComponent = new TableComponent();
 
     public StudentRegistrationPage openPage() {
         open("/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        return this;
+    }
+
+    public StudentRegistrationPage disableBanners (){
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         return this;
     }
 
     public StudentRegistrationPage setFirstName (String value) {
         firstNameInput.setValue(value);
         return this;
-
     }
 
     public StudentRegistrationPage setLastName (String value) {
@@ -110,8 +113,8 @@ public class StudentRegistrationPage {
         return this;
     }
 
-    public StudentRegistrationPage checkRegistrationResultTable (String key, String value) {
-        registrationResultTable.shouldHave(text(key)).shouldHave(text(value));
+    public StudentRegistrationPage checkRegistrationResultTable(String key, String value) {
+        tableComponent.checkResultTableSellValue(key, value);
         return this;
     }
 

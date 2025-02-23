@@ -11,6 +11,7 @@ public class TextBoxTestsPageObject extends TestBase {
     @Test
     public void succesfullFillAllTextBoxTest(){
         textBoxPage.openPage()
+                .disableBanners()
                 .setFullName("Alex Latalin")
                 .setUserEmail("AlexL@nomail.com")
                 .setCurrentAddress("Russian Federation")

@@ -10,6 +10,7 @@ public class PracticeFormTestsPageObject extends TestBase {
     @Test
     public void succesfullFillAllPracticeFormTest() {
         studentRegistrationPage.openPage()
+                .disableBanners()
                 .setFirstName("Alex")
                 .setLastName("Latalin")
                 .setUserEmail("AlexL@nomail.com")
@@ -40,6 +41,7 @@ public class PracticeFormTestsPageObject extends TestBase {
     @Test
     public void succesfullMimimumDataPracticeFormTest() {
         studentRegistrationPage.openPage()
+                .disableBanners()
                 .setFirstName("Alex")
                 .setLastName("Latalin")
                 .setGenderWrapper("Male")
@@ -55,6 +57,7 @@ public class PracticeFormTestsPageObject extends TestBase {
     @Test
     public void notValidPhoneNumberPracticeFormTest() {
         studentRegistrationPage.openPage()
+                .disableBanners()
                 .setFirstName("Alex")
                 .setLastName("Latalin")
                 .setGenderWrapper("Male")

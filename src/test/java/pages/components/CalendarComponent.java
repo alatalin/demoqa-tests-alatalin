@@ -12,4 +12,5 @@ public class CalendarComponent {
         $(".react-datepicker__year-select").selectOption(year);
         $$(".react-datepicker__day").findBy(text(day)).click();
     }
+
 }
